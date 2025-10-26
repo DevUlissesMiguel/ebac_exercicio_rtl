@@ -18,7 +18,12 @@ const Post = () => {
         <div>
             <ul className={styles['post-comments']}>
                 {comments.map(({ comment, id }) => (
-                    <li className={styles['post-comment']} key={id}>
+                    <li
+                        className={styles['post-comment']}
+                        key={id}
+                        // 1. ADICIONADO: data-testid no item da lista (<li>)
+                        data-testid="comentario-item"
+                    >
                         <p className={styles['post-comment-content']}>
                             {comment}
                         </p>
@@ -26,7 +31,15 @@ const Post = () => {
                 ))}
             </ul>
             <form onSubmit={handleAddComment} className={styles['post-comments-form']}>
-                <textarea value={tempComment} onChange={e => setTempComment(e.target.value)} required className={styles['post-comments-form-textarea']} />
+                <textarea
+                    value={tempComment}
+                    onChange={e => setTempComment(e.target.value)}
+                    required
+                    className={styles['post-comments-form-textarea']}
+                    // 2. ADICIONADO: data-testid no campo de input (<textarea>)
+                    data-testid="campo-comentario"
+                    placeholder="Deixe seu comentário"
+                />
                 <button type="submit" className={styles['post-comments-form-button']}>
                     Comentar
                 </button>
